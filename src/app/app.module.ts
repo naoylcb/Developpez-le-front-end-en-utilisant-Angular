@@ -10,6 +10,7 @@ import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { TitleComponent } from './components/title/title.component';
 import { StatComponent } from './components/stat/stat.component';
 import { DetailComponent } from './pages/detail/detail.component';
+import { ErrorComponent } from './pages/error/error.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { DetailComponent } from './pages/detail/detail.component';
     TitleComponent,
     StatComponent,
     DetailComponent,
+    ErrorComponent,
   ],
   imports: [
     BrowserModule,
