@@ -45,8 +45,30 @@ export class DetailComponent implements OnInit, OnDestroy {
             },
           ];
           this.title = olympic.country;
+          this.stats.push({
+            title: 'Number of entries',
+            value: olympic.participations.length,
+          });
+          this.stats.push({
+            title: 'Total number of medals',
+            value: this.olympicService.getCountryTotalMedals(
+              olympic.participations
+            ),
+          });
+          this.stats.push({
+            title: 'Total number of athletes',
+            value: this.getCountryTotalAthletes(olympic.participations),
+          });
         }
       });
+  }
+
+  getCountryTotalAthletes(participations: Participation[]): number {
+    let totalAthletes: number = 0;
+    participations.forEach((participation) => {
+      totalAthletes += participation.athleteCount;
+    });
+    return totalAthletes;
   }
 
   resizeChart(width: number): void {

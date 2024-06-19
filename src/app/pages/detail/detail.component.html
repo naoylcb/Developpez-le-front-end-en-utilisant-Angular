@@ -1,5 +1,13 @@
 <app-title [title]="title"></app-title>
 
+<div class="stat-zone">
+  <app-stat
+    *ngFor="let stat of stats"
+    [title]="stat.title"
+    [value]="stat.value"
+  ></app-stat>
+</div>
+
 <div #ContainerRef>
   <ngx-charts-line-chart
     (window:resize)="resizeChart(ContainerRef.offsetWidth)"
