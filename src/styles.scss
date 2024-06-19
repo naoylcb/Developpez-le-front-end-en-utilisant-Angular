@@ -18,3 +18,23 @@ body {
 .ngx-charts-outer {
   margin: auto;
 }
+
+.center {
+  padding: 20px;
+  margin-top: 10px;
+  background-color: var(--primary-color);
+  color: white;
+  text-align: center;
+  border-radius: 10px;
+
+  h1 {
+    margin: 0;
+  }
+
+  a {
+    padding: 10px;
+    background-color: white;
+    color: (var(--primary-color));
+    text-decoration: none;
+  }
+}
