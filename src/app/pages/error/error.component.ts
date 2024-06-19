@@ -12,6 +12,7 @@ export class ErrorComponent implements OnInit {
   constructor(private route: ActivatedRoute) {}
 
   ngOnInit(): void {
+    // Choose error message displayed according to errorType in url
     const errorType: string = this.route.snapshot.params['errorType'];
     switch (errorType) {
       case 'initialdata':

@@ -19,6 +19,7 @@ export class OlympicService {
     return this.http.get<Olympic[]>(this.olympicUrl).pipe(
       tap((value) => this.olympics$.next(value)),
       catchError(() => {
+        // Redirect to error page if there is an error
         this.router.navigateByUrl('error/initialdata');
         return of([]);
       })

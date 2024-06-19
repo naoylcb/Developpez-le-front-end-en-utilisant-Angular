@@ -25,7 +25,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   constructor(private olympicService: OlympicService, private router: Router) {}
 
   ngOnInit(): void {
-    this.destroy$ = new Subject<boolean>();
+    this.destroy$ = new Subject<boolean>(); // This subject serve to close observable subscription
     this.olympics$ = this.olympicService.getOlympics();
     this.olympics$.pipe(takeUntil(this.destroy$)).subscribe((value) => {
       if (value.length > 0) {
@@ -44,6 +44,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
 
   getNumberJos(countries: Olympic[]): StatData {
+    // Get total number of Jos for all countries
     let jos: string[] = [];
     countries.forEach((country) => {
       country.participations.forEach((participation) => {
@@ -56,6 +57,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
 
   resizeChart(width: number): void {
+    // Resize the chart according to window size changes
     this.view = [width, 500];
   }
 

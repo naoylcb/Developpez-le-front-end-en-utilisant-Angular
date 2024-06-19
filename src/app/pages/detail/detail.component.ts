@@ -31,7 +31,7 @@ export class DetailComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit(): void {
-    this.destroy$ = new Subject<boolean>();
+    this.destroy$ = new Subject<boolean>(); // This subject serve to close observable subscription
     const countryName: string = this.route.snapshot.params['countryName'];
     this.olympicService
       .getOlympicByName(countryName)
@@ -66,6 +66,7 @@ export class DetailComponent implements OnInit, OnDestroy {
         }
 
         if (this.count === 2) {
+          // Redirect to error page if country in url not found
           this.router.navigateByUrl('error/countrynotfound');
         }
       });
@@ -80,6 +81,7 @@ export class DetailComponent implements OnInit, OnDestroy {
   }
 
   resizeChart(width: number): void {
+    // Resize the chart according to window size changes
     this.view = [width, 500];
   }
 
