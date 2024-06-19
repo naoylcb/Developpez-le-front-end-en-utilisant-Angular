@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { catchError, tap } from 'rxjs/operators';
+import { catchError, tap, map } from 'rxjs/operators';
 import { Olympic } from 'src/app/core/models/Olympic';
 import { Participation } from 'src/app/core/models/Participation';
 
@@ -37,5 +37,11 @@ export class OlympicService {
       totalMedals += participation.medalsCount;
     });
     return totalMedals;
+  }
+
+  getOlympicByName(olympicName: string) {
+    return this.olympics$.pipe(
+      map((value) => value.find((v) => v.country === olympicName))
+    );
   }
 }

@@ -1,0 +1,16 @@
+<app-title [title]="title"></app-title>
+
+<div #ContainerRef>
+  <ngx-charts-line-chart
+    (window:resize)="resizeChart(ContainerRef.offsetWidth)"
+    [results]="data"
+    [view]="view"
+    [showXAxisLabel]="showXAxisLabel"
+    [xAxisLabel]="xAxisLabel"
+    [xAxis]="xAxis"
+    [yAxis]="yAxis"
+  >
+  </ngx-charts-line-chart>
+</div>
+
+<button routerLink="">Retour</button>
