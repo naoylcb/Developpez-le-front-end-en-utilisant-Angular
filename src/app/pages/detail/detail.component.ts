@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { OlympicService } from 'src/app/core/services/olympic.service';
 import { StatData } from 'src/app/core/models/StatData';
 import { Participation } from 'src/app/core/models/Participation';
@@ -22,10 +22,12 @@ export class DetailComponent implements OnInit, OnDestroy {
   xAxisLabel: string = 'Dates';
   data!: { name: string; series: { name: string; value: number }[] }[];
   private destroy$!: Subject<boolean>;
+  private count: number = 0;
 
   constructor(
     private route: ActivatedRoute,
-    private olympicService: OlympicService
+    private olympicService: OlympicService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -59,6 +61,12 @@ export class DetailComponent implements OnInit, OnDestroy {
             title: 'Total number of athletes',
             value: this.getCountryTotalAthletes(olympic.participations),
           });
+        } else {
+          this.count++;
+        }
+
+        if (this.count === 2) {
+          this.router.navigateByUrl('error/countrynotfound');
         }
       });
   }
