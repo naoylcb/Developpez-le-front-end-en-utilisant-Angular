@@ -1,4 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Router } from '@angular/router';
 import { Observable, of, Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { OlympicService } from 'src/app/core/services/olympic.service';
@@ -21,7 +22,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   stats: StatData[] = [];
   private destroy$!: Subject<boolean>;
 
-  constructor(private olympicService: OlympicService) {}
+  constructor(private olympicService: OlympicService, private router: Router) {}
 
   ngOnInit(): void {
     this.destroy$ = new Subject<boolean>();
@@ -56,6 +57,10 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   resizeChart(width: number): void {
     this.view = [width, 500];
+  }
+
+  goOnCountryDetail(countryName: string): void {
+    this.router.navigateByUrl(`detail/${countryName}`);
   }
 
   ngOnDestroy(): void {
